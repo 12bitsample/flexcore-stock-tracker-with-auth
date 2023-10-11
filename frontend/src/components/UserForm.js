@@ -127,8 +127,8 @@ const UserForm = () => {
                     <option>Add</option>
                     <option>Subtract</option>
                 </select>
-                <label>Amount: </label>
                 
+                <label>Amount: </label>
                 <input 
                     type="number" 
                     value={count}

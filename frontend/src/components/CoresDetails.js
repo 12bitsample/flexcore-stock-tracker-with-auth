@@ -20,7 +20,9 @@ const CoresDetails = ({ core }) => {
         <div className="cores-details">
             <h4>Core Size: {core.size}</h4>
             <h4>Count: {core.count}</h4>
+            <h4>Select if more needed than what is in stock <input type='radio'></input>  </h4>    
             <span className='material-symbols-rounded' onClick={handleClick} title='Delete Core'>Delete</span>
+
         </div>
     )
 }

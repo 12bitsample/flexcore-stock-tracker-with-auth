@@ -12,6 +12,10 @@ const coresSchema = new Schema ({
         type: Number,
         required: true,
     },
+    needAdditional: {
+      type: Schema.Types.Boolean,
+      default: false,
+    },
 }, { timestamps: true })
 
 coresSchema.post('save', function(error, doc, next) {
