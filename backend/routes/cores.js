@@ -29,4 +29,7 @@ router.delete('/:id', deleteCore);
 //CHANGE count
 router.patch('/updateCoreStock', updateCoreStock);
 
+//CHANGE need additional cores for order
+// router.patch(':id', changeTrueFalse);
+
 export {router as default};
