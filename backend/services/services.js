@@ -1,7 +1,7 @@
 import coreModel from "../models/coreModel.js";
 
 
-
+//retrieve id by size
 const getIdBySize = async (req,res) => {
     const { size } = req.params;
 
@@ -20,4 +20,12 @@ const getIdBySize = async (req,res) => {
     }
 }
 
-export {getIdBySize};
+//toggle true/false for need additional bands
+const changeTrueFalse = async (req,res) => {
+
+}
+
+export {
+    getIdBySize,
+    changeTrueFalse,
+};

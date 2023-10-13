@@ -7,7 +7,11 @@ import {
         updateCoreStock,
     } from '../controllers/coresController.js';
 
-import { getIdBySize } from '../services/getIdBySize.js';
+import { 
+    getIdBySize,
+    changeTrueFalse,
+    
+    } from '../services/services.js';
 
 const router = express.Router();
 
@@ -30,6 +34,6 @@ router.delete('/:id', deleteCore);
 router.patch('/updateCoreStock', updateCoreStock);
 
 //CHANGE need additional cores for order
-// router.patch(':id', changeTrueFalse);
+router.patch(':id/changeTrueFalse', changeTrueFalse);
 
 export {router as default};
