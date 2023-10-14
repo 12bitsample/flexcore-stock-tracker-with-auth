@@ -22,7 +22,24 @@ const getIdBySize = async (req,res) => {
 
 //toggle true/false for need additional bands
 const changeTrueFalse = async (req,res) => {
+    // console.log('changetruefalse function has triggered!'); 
+    const { id } = req.params;
 
+    try {
+        const updatedCore = await coreModel.findByIdAndUpdate(
+            id,
+            { needAdditional: true },
+            { new: true },
+        );
+
+        if(!updatedCore) {
+            return res.status(404).json({ message: 'Core not found!' });
+        }
+
+        return res.json(updatedCore);
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
 }
 
 export {
