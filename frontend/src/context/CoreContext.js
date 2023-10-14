@@ -16,7 +16,7 @@ export const coresReducer = (state, action) => {
             return {
                 cores: state.cores.filter((w) => w._id !== action.payload._id)
             }
-            case 'UPDATE_CORE':
+        case 'UPDATE_CORE':
             
             return {
                 cores: state.cores.map((core) =>
@@ -31,11 +31,12 @@ export const coresReducer = (state, action) => {
 
 export const CoresContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(coresReducer, {
-        cores: []
+        cores: [],
+        needAdditional: false,
     });
 
     return (
-        <CoresContext.Provider value={{ cores: state.cores, dispatch}}>
+        <CoresContext.Provider value={{ cores: state.cores, needAdditional: state.needAdditional, dispatch}}>
             { children }
         </CoresContext.Provider>
     )
