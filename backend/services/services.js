@@ -22,14 +22,10 @@ const getIdBySize = async (req,res) => {
 
 //toggle true/false for need additional bands
 const changeTrueFalse = async (req,res) => {
-    
-
-    console.log(req.params);
     const { id } = req.params;
 
-
     try {
-        const isChecked = req.params.needAdditional;
+        const isChecked = req.body.needAdditional;
 
         const updatedCore = await coreModel.findByIdAndUpdate(
             id,

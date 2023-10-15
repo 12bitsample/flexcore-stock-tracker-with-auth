@@ -4,7 +4,7 @@ import { CoresContext } from "../context/CoreContext";
 
 const CoresDetails = ({ core }) => { 
     const { dispatch, needAdditional } = useContext(CoresContext);
-    const [ isChecked, setIsChecked ] = useState(needAdditional);
+    const [ isChecked, setIsChecked ] = useState(needAdditional || false);
 
     const handleDeleteClick = async () => {
         const response = await fetch('/api/cores/' + core._id, {
@@ -39,18 +39,37 @@ const CoresDetails = ({ core }) => {
     //             console.error('Failed to update core.');
     //         }
     //     }
+    
 
     const handleMoreClick = async () => {
-        setIsChecked(!isChecked); // Toggle the checkbox state
+        const updatedNeedAdditional = !isChecked;
 
-        // Dispatch an action to update the context state
-        dispatch({
-            type: 'UPDATE_CORE',
-            payload: {
-                ...core,
-                needAdditional: !isChecked, // Invert the needAdditional value
+        const updatedCore = {...core, needAdditional: updatedNeedAdditional };
+        
+        setIsChecked(updatedNeedAdditional); // Toggle the checkbox state
+
+        console.log(core._id);
+        const response = await fetch('/api/cores/' + core._id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
             },
+            body:JSON.stringify(updatedCore), 
         });
+
+        if (response.ok) {
+            const updatedCore = await response.json();
+            dispatch({
+                type: 'UPDATE_CORE',
+                payload: {
+                    updatedCore,
+                },
+            });
+        } else {
+            console.error('Failed to update core.');
+        }
+        // Dispatch an action to update the context state
+    
     }
 
 
