@@ -1,11 +1,18 @@
-import { useState, useContext } from "react";
-import { useCoresContext } from "../hooks/useCoresContext"
+import { useState, useContext, useEffect } from "react";
 import { CoresContext } from "../context/CoreContext";
 
 const CoresDetails = ({ core }) => { 
     const { dispatch, needAdditional } = useContext(CoresContext);
+    // const [ isChecked, setIsChecked ] = useState(needAdditional || false);
     const [ isChecked, setIsChecked ] = useState(needAdditional || false);
 
+    console.log('here is needAdditional value: ', needAdditional);    
+    useEffect(() => {
+        //this updates the initial state of isChecked when needAdditional changes
+        setIsChecked(needAdditional);
+    }, [needAdditional]);
+
+    //handle click to delete core
     const handleDeleteClick = async () => {
         const response = await fetch('/api/cores/' + core._id, {
             method: 'DELETE'
@@ -17,29 +24,38 @@ const CoresDetails = ({ core }) => {
         }
     }
 
-    // const handleMoreClick = async (e) => {
-    //     if (e.target.checked) {
-    //         const updatedCore = {...core, needAdditional: e.target.checked };
+    //handle more bands needed checkbox
+    // const handleMoreClick = async () => {
+    //     const updatedNeedAdditional = !isChecked;
 
-    //         console.log(e.target.checked);
-            
+    //     const updatedCore = {...core, needAdditional: updatedNeedAdditional };
+        
+    //     setIsChecked(updatedNeedAdditional); // Toggle the checkbox state
 
-    //         const response = await fetch('/api/cores/' + core._id, {
-    //             method: 'PATCH',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
+    //     console.log(core._id);
+
+    //     const response = await fetch('/api/cores/' + core._id, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body:JSON.stringify(updatedCore), 
+    //     });
+
+    //     if (response.ok) {
+    //         const updatedCore = await response.json();
+    //         dispatch({
+    //             type: 'UPDATE_CORE',
+    //             payload: {
+    //                 updatedCore,
     //             },
-    //             body:JSON.stringify(updatedCore), 
     //         });
-
-    //         if (response.ok) {
-    //             const updatedCoreData = await response.json();
-    //             dispatch({ type: 'UPDATE_CORE', payload: updatedCoreData });
-    //         } else {
-    //             console.error('Failed to update core.');
-    //         }
+    //     } else {
+    //         console.error('Failed to update core.');
     //     }
+    //     // Dispatch an action to update the context state
     
+    // }
 
     const handleMoreClick = async () => {
         const updatedNeedAdditional = !isChecked;
@@ -49,12 +65,13 @@ const CoresDetails = ({ core }) => {
         setIsChecked(updatedNeedAdditional); // Toggle the checkbox state
 
         console.log(core._id);
+
         const response = await fetch('/api/cores/' + core._id, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify(updatedCore), 
+            body:JSON.stringify({ ...core, needAdditional: updatedNeedAdditional }), 
         });
 
         if (response.ok) {

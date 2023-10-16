@@ -6,6 +6,7 @@ export const coresReducer = (state, action) => {
     switch (action.type) {
         case 'SET_CORES':
             return {
+                ...state,
                 cores: action.payload
             }
         case 'CREATE_CORE':
@@ -36,8 +37,12 @@ export const CoresContextProvider = ({ children }) => {
     });
 
     return (
-        <CoresContext.Provider value={{ cores: state.cores, needAdditional: state.needAdditional, dispatch}}>
-            { children }
+        // <CoresContext.Provider value={{ cores: state.cores, needAdditional: state.needAdditional, dispatch}}>
+        //     { children }
+        // </CoresContext.Provider>
+
+        <CoresContext.Provider value={{ cores: state.cores, dispatch, needAdditional: state.needAdditional }}>
+        { children }
         </CoresContext.Provider>
     )
 }
