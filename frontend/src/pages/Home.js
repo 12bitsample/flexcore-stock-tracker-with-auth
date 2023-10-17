@@ -9,6 +9,7 @@ import UserForm from "../components/UserForm.js";
 
 const Home = () => {
     const {cores, dispatch} = useCoresContext();
+   
     
     useEffect(() => {
         const fetchCores = async () => {
