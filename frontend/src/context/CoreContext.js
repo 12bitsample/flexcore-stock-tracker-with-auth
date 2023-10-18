@@ -33,7 +33,7 @@ export const coresReducer = (state, action) => {
 export const CoresContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(coresReducer, {
         cores: [],
-        // needAdditional: false,
+        needAdditional: false,
     });
 
     return (
@@ -41,7 +41,7 @@ export const CoresContextProvider = ({ children }) => {
         //     { children }
         // </CoresContext.Provider>
 
-        <CoresContext.Provider value={{ cores: state.cores, dispatch, needAdditional: false }}>
+        <CoresContext.Provider value={{ cores: state.cores, needAdditional: state.needAdditional, dispatch, }}>
         { children }
         </CoresContext.Provider>
     )
