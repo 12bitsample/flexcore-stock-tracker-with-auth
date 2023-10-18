@@ -29,7 +29,7 @@ const Home = () => {
             <h3 className='core-title'>Core Details</h3>
             <div className="cores">
                 {cores && cores.map((core) => (
-                    <CoresDetails key={core._id} core={core} />
+                    <CoresDetails key={core._id} core={core} needAdditional={needAdditional} />
                 ))}
             </div>
             <AdminForm />

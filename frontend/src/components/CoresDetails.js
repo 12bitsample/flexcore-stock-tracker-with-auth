@@ -11,8 +11,6 @@ const CoresDetails = ({ core }) => {
         setIsChecked(needAdditional);
     }, [needAdditional]);
 
-    
-
     //handle click to delete core
     const handleDeleteClick = async () => {
         const response = await fetch('/api/cores/' + core._id, {
@@ -27,8 +25,6 @@ const CoresDetails = ({ core }) => {
 
     const handleMoreClick = async () => {
         const updatedNeedAdditional = !isChecked;
-
-        // const updatedCore = {...core, needAdditional: updatedNeedAdditional };
         
         setIsChecked(updatedNeedAdditional); // Toggle the checkbox state
 
