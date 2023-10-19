@@ -5,7 +5,6 @@ const CoresDetails = ({ core }) => {
     const { dispatch, needAdditional } = useContext(CoresContext);
     const [isChecked, setIsChecked] = useState(false);
 
-    // console.log('here is needAdditional value: ', needAdditional);    
     useEffect(() => {
         //this updates the initial state of isChecked when needAdditional changes
         setIsChecked(core.needAdditional || false);
@@ -40,19 +39,12 @@ const CoresDetails = ({ core }) => {
 
         if (response.ok) {
             const updatedCore = await response.json();
-            dispatch({
-                type: 'UPDATE_CORE',
-                payload: {
-                    updatedCore,
-                },
-        // if (response.ok) {
-        //     const updatedCore = await response.json();
-        //     dispatch({
-        //         type: 'UPDATE_NEED_ADDITIONAL',
-        //         payload: {
-        //             coreId: core._id, needAdditional: needAdditional
-        //         },
-            });
+            // dispatch({
+            //     type: 'UPDATE_CORE',
+            //     payload: {
+            //         updatedCore,
+            //     },
+            // });
         } else {
             console.error('Failed to update core.');
         }
@@ -60,8 +52,6 @@ const CoresDetails = ({ core }) => {
     
     }
 
-
-    
     return (
         <div className="cores-details">
             <h4>Core Size: {core.size}</h4>
