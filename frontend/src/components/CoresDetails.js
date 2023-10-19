@@ -3,13 +3,13 @@ import { CoresContext } from "../context/CoreContext";
 
 const CoresDetails = ({ core }) => { 
     const { dispatch, needAdditional } = useContext(CoresContext);
-    const [isChecked, setIsChecked] = useState(needAdditional);
+    const [isChecked, setIsChecked] = useState(false);
 
-    console.log('here is needAdditional value: ', needAdditional);    
+    // console.log('here is needAdditional value: ', needAdditional);    
     useEffect(() => {
         //this updates the initial state of isChecked when needAdditional changes
-        setIsChecked(needAdditional);
-    }, [needAdditional]);
+        setIsChecked(core.needAdditional || false);
+    }, [core]);
 
     //handle click to delete core
     const handleDeleteClick = async () => {
@@ -28,7 +28,7 @@ const CoresDetails = ({ core }) => {
         
         setIsChecked(updatedNeedAdditional); // Toggle the checkbox state
 
-        console.log(core._id);
+        console.log('this is isChecked value', isChecked);
 
         const response = await fetch('/api/cores/' + core._id, {
             method: 'PATCH',
@@ -45,6 +45,13 @@ const CoresDetails = ({ core }) => {
                 payload: {
                     updatedCore,
                 },
+        // if (response.ok) {
+        //     const updatedCore = await response.json();
+        //     dispatch({
+        //         type: 'UPDATE_NEED_ADDITIONAL',
+        //         payload: {
+        //             coreId: core._id, needAdditional: needAdditional
+        //         },
             });
         } else {
             console.error('Failed to update core.');
