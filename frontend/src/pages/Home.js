@@ -9,12 +9,15 @@ import UserForm from "../components/UserForm.js";
 
 const Home = () => {
     const {cores, dispatch} = useCoresContext();
-    
-    useEffect(() => {
+
+        const handleCheckboxChange = (coreId, checked) => {
+            
+        }
+   
+        useEffect(() => {
         const fetchCores = async () => {
             const response = await fetch('/api/cores');
             const json = await response.json();
-            console.log(json);
 
             if (response.ok) {
                 dispatch({type: 'SET_CORES', payload: json})
@@ -26,14 +29,11 @@ const Home = () => {
     return (
         <div className="home">
             <h3 className='core-title'>Core Details</h3>
+            {/* map cores to home */}
             <div className="cores">
-                {/* {cores && cores.map((core) => (
-                    <CoresDetails key={core._id} core={core} />
-                ))} */}
                 {cores && cores.map((core) => (
-                    <CoresDetails key={core._id} core={core} needAdditional={core.needAdditional} />
+                    <CoresDetails key={core._id} core={core}  />
                 ))}
-
             </div>
             <AdminForm />
             <UserForm />

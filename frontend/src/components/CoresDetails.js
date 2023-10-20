@@ -39,12 +39,6 @@ const CoresDetails = ({ core }) => {
 
         if (response.ok) {
             const updatedCore = await response.json();
-            // dispatch({
-            //     type: 'UPDATE_CORE',
-            //     payload: {
-            //         updatedCore,
-            //     },
-            // });
         } else {
             console.error('Failed to update core.');
         }

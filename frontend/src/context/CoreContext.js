@@ -24,20 +24,6 @@ export const coresReducer = (state, action) => {
                     core._id === action.payload._id ? { ...core, ...action.payload } : core
                 )
             }
-        // case 'UPDATE_NEED_ADDITIONAL':
-        //     return {
-        //         ...state,
-        //         needAdditional: action.payload,
-        //     }
-        // case 'UPDATE_NEED_ADDITIONAL':
-        //     const{ coreId, needAdditional } = action.payload;
-        //     const updatedCores = state.cores.map((core) => 
-        //     core._id === coreId ? { ...core, needAdditional } : core
-        //     );
-        //     return {
-        //         ...state,
-        //         cores: updatedCores,
-        //     }
             
             default: 
                 return state
