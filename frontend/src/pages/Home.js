@@ -9,10 +9,6 @@ import UserForm from "../components/UserForm.js";
 
 const Home = () => {
     const {cores, dispatch} = useCoresContext();
-
-        const handleCheckboxChange = (coreId, checked) => {
-            
-        }
    
         useEffect(() => {
         const fetchCores = async () => {
@@ -26,14 +22,33 @@ const Home = () => {
         fetchCores();
     }, [dispatch])
 
+    //custom sort function to prioritize checked cores then sort by count
+    const customSort = (a, b) => {
+        //sort by checkbox state, whether checked or not
+        if (a.needAdditional === b.needAdditional) {
+            //when checkbox is the same, sort by count
+            return b.count - a.count;
+        }
+        //move checked boxes to top
+        return a.needAdditional ? -1 : 1;
+    }
+
+    //sort
+    const sortedCores = cores.slice().sort(customSort);
+
     return (
         <div className="home">
             <h3 className='core-title'>Core Details</h3>
             {/* map cores to home */}
             <div className="cores">
-                {cores && cores.map((core) => (
+                {/* {cores && cores.map((core) => (
                     <CoresDetails key={core._id} core={core}  />
+                ))} */}
+
+                {sortedCores.map((core) => (
+                    <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
                 ))}
+                
             </div>
             <AdminForm />
             <UserForm />

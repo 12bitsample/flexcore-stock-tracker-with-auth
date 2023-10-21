@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 import { CoresContext } from "../context/CoreContext";
 
-const CoresDetails = ({ core }) => { 
-    const { dispatch, needAdditional } = useContext(CoresContext);
+const CoresDetails = ({ core, dispatch }) => { 
+    // const { dispatch, needAdditional } = useContext(CoresContext);
     const [isChecked, setIsChecked] = useState(false);
 
     useEffect(() => {
