@@ -39,6 +39,9 @@ const CoresDetails = ({ core, dispatch }) => {
 
         if (response.ok) {
             const updatedCore = await response.json();
+            dispatch({ type: 'UPDATE_CORE', payload: updatedCore })
+            //trigger sorting immediately upon click
+            dispatch({ type: 'SORT_CORES' })
         } else {
             console.error('Failed to update core.');
         }

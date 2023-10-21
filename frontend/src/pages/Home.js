@@ -27,7 +27,7 @@ const Home = () => {
         //sort by checkbox state, whether checked or not
         if (a.needAdditional === b.needAdditional) {
             //when checkbox is the same, sort by count
-            return b.count - a.count;
+            return a.count - b.count;
         }
         //move checked boxes to top
         return a.needAdditional ? -1 : 1;
