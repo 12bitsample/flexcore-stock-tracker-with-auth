@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect } from "react";
-import { CoresContext } from "../context/CoreContext";
+import { useState, useEffect } from "react";
+
 
 const CoresDetails = ({ core, dispatch }) => { 
     // const { dispatch, needAdditional } = useContext(CoresContext);
@@ -45,12 +45,16 @@ const CoresDetails = ({ core, dispatch }) => {
         } else {
             console.error('Failed to update core.');
         }
-        // Dispatch an action to update the context state
     
-    }
+    };
+
+  
 
     return (
-        <div className="cores-details">
+        //red border css for checked cores
+        // <div className={`cores-details ${isChecked ? 'div.cores-details.selected-core ' : ''}`}>
+        <div style={{ border: isChecked ? '2px solid red' : '1px solid black' }} className="cores-details">
+
             <h4>Core Size: {core.size}</h4>
             <h4>Count: {core.count}</h4>  
             <h4><input type='checkbox' onChange={handleMoreClick} checked={isChecked}/> More in orders than in stock</h4>    
