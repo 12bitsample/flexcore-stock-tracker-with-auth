@@ -41,15 +41,16 @@ const Home = () => {
             <h3 className='core-title'>Core Details</h3>
             {/* map cores to home */}
             <div className="cores">
-                {/* {cores && cores.map((core) => (
-                    <CoresDetails key={core._id} core={core}  />
-                ))} */}
-
                 {sortedCores.map((core) => (
                     <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
                 ))}
                 
             </div>
+            {/* <div className="help">
+                <h2>Help</h2>
+                <p>lorem20
+                </p>
+            </div> */}
             <AdminForm />
             <UserForm />
         </div>
