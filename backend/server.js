@@ -4,6 +4,7 @@ dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
 import coresRoutes from './routes/cores.js';
+import userRoutes from './routes/user.js';
 
 //express app
 const app = express();
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/api/cores', coresRoutes);
+app.use('/api/user', userRoutes);
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)

@@ -51,8 +51,6 @@ const CoresDetails = ({ core, dispatch }) => {
   
 
     return (
-        //red border css for checked cores
-        // <div className={`cores-details ${isChecked ? 'div.cores-details.selected-core ' : ''}`}>
         <div style={{ border: isChecked ? '5px inset red' : '1px solid black' }} className="cores-details">
 
             <h4>Core Size: {core.size}</h4>
