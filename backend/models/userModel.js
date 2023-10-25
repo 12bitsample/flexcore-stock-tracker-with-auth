@@ -1,5 +1,6 @@
-import mongoose from "mongoose";
-import bcrypt from bcrypt;
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import validator from 'validator';
 
 const Schema = mongoose.Schema;
 
@@ -16,7 +17,7 @@ const userSchema = new Schema ({
 }, { timestamps: true })
 
 //static signup method
-userSchema.statics.signup = async (username, password) => {
+userSchema.statics.signup = async function(username, password) {
     const exists = await this.findOne({ username });
 
     if (exists) {
@@ -34,4 +35,4 @@ userSchema.statics.signup = async (username, password) => {
     return user;
 }
 
-export default mongoose.model('userModel', userSchema);
+export default mongoose.model('User', userSchema);
