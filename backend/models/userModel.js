@@ -18,6 +18,15 @@ const userSchema = new Schema ({
 
 //static signup method
 userSchema.statics.signup = async function(username, password) {
+    
+    //validation
+    if (!username || !password) {
+        throw Error('All fields must be correctly filled!')
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error('Password is not strong enough!')
+    }
+    
     const exists = await this.findOne({ username });
 
     if (exists) {
