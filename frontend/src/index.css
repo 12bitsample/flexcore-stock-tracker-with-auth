@@ -97,7 +97,7 @@ header a {
   margin-top: 1%;;
 }
 
-#admin-form button {
+button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +113,7 @@ header a {
   touch-action: manipulation;
 }
 
-#admin-form button:focus {
+button:focus {
   box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 1px black;
   outline: 0;
 }
@@ -129,8 +129,8 @@ input.error {
 
 /* navbar */
 nav {
-  display:flex;
-  
+  /* display:flex; */
+ 
   width: 100%;
  
 }
@@ -139,13 +139,27 @@ nav a {
   
   
 }
+
+.link-div {
+  text-align: end;
+}
+
 /* auth forms */
 form.signup, form.login {
-  max-width: 400px;
+  max-width: 75%;
   margin: 40px auto;
-  padding: 20px;
+  padding: 2%;
   background: #fff;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > * {
+  display: block;
+  margin-top: 1%;;
+
 }
 
 

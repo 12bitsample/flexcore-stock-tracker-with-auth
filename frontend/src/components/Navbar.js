@@ -8,7 +8,7 @@ const Navbar = () => {
                     <h1>Flex-Core Raw Core Tracker</h1>
                 </Link>
                 <nav>
-                    <div>
+                    <div className="link-div">
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Sign Up</Link>
                     </div>
