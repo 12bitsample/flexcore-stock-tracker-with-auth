@@ -13,6 +13,8 @@ const Signup = () => {
         await signup(username, password);
     }
 
+    console.log(error);
+
     return (
         <form className="signup" onSubmit={handleSubmit}>
             <h3>Sign Up</h3>
@@ -34,6 +36,8 @@ const Signup = () => {
 
             <button disabled={isLoading}>Sign Up!</button>
             {error && <div className="error">{error}</div>}
+        
+
         </form>
     )
 }
