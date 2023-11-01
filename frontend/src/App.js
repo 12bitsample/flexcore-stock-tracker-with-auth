@@ -11,8 +11,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        {/* <Signup />
-        <Login /> */}
         <div className="pages">
           <Routes>
             <Route 
@@ -31,7 +29,7 @@ function App() {
         </div>
       </BrowserRouter>
     </div>
-  )
-};
+  );
+}
 
 export default App;
