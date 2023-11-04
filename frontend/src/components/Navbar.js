@@ -26,9 +26,9 @@ const Navbar = () => {
                     )}
                     {!user && (
                         <div id="div-logged-out">
-                        <Link to="/login">Login</Link>
-                        <Link to="/signup">Sign Up</Link>
-                    </div>
+                            <Link to="/login">Login</Link>
+                            <Link to="/signup">Sign Up</Link>
+                        </div>
                     )}
                 </nav>
             </div>

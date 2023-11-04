@@ -46,6 +46,7 @@ export const CoresContextProvider = ({ children }) => {
         needAdditional: false,
     });
 
+
     return (
         <CoresContext.Provider value={{ cores: state.cores, needAdditional: state.needAdditional, dispatch, }}>
         { children }
