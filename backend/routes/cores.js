@@ -8,12 +8,17 @@ import {
     } from '../controllers/coresController.js';
 
 import { 
-    getIdBySize,
-    changeTrueFalse,
+        getIdBySize,
+        changeTrueFalse,
     
     } from '../services/services.js';
 
+import requireAuth from '../middleware/requireAuth.js';
+
 const router = express.Router();
+
+//require authorizaton for all cores routes
+router.use(requireAuth);
 
 //GET all cores
 router.get('/', getCores);

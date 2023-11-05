@@ -16,6 +16,15 @@ root.render(
       </CoresContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
+
+// without strict mode:
+
+// <AuthContextProvider>
+//   <CoresContextProvider>
+//     <App />
+//   </CoresContextProvider>
+// </AuthContextProvider>
+
 );
 
 
