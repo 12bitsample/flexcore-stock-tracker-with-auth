@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/userModel';
+import User from '../models/userModel.js';
 
 const requireAuth = async (req, res, next) => {
     
@@ -13,9 +13,10 @@ const requireAuth = async (req, res, next) => {
     const token = authorization.split(' ')[1];
 
     try {
-        const {_id} = jwt.verify(token, process.env.SECRET_JWT_PASS)
+        const { _id } = jwt.verify(token, process.env.SECRET_JWT_PASS);
+        
 
-        req.user = await User.findOne({_id}).select('_id');
+        req.user = await User.findOne({ _id }).select('_id');
         next();
 
     }catch (error) {
