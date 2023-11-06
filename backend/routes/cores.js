@@ -18,7 +18,7 @@ import requireAuth from '../middleware/requireAuth.js';
 const router = express.Router();
 
 //require authorizaton for all cores routes
-router.use(requireAuth);
+// router.use(requireAuth);
 
 //GET all cores
 router.get('/', getCores);

@@ -13,8 +13,6 @@ const Signup = () => {
         await signup(username, password);
     }
 
-    console.log(error);
-
     return (
         <form className="signup" onSubmit={handleSubmit}>
             <h3>Sign Up</h3>

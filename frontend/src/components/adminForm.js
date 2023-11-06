@@ -51,7 +51,7 @@ const AdminForm = () => {
                     className={emptyFields?.includes('size') ? 'error' : ''}
                 />
 
-                <label><bold>Core Count: </bold></label>
+                <label>Core Count: </label>
                 <input 
                     type="number"
                     onChange={(e) => setCount(e.target.value)} 

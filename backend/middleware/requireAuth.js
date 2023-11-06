@@ -5,6 +5,7 @@ const requireAuth = async (req, res, next) => {
     
     //verify authentication
     const { authorization } = req.headers;
+    console.log('this is req.headers', req.headers);
 
     if (!authorization) {
         return res.status(401).json({error: 'Authorization token required!'})
@@ -14,6 +15,7 @@ const requireAuth = async (req, res, next) => {
 
     try {
         const { _id } = jwt.verify(token, process.env.SECRET_JWT_PASS);
+        console.log('This is the _id in requireAuth: ', _id);
         
 
         req.user = await User.findOne({ _id }).select('_id');
@@ -23,8 +25,9 @@ const requireAuth = async (req, res, next) => {
         console.log(error);
         res.status(401).json({error: 'Request is not authorized!'});
     }
+    console.log('This is the _id in requireAuth: ', _id);
 }
 
 // export {requireAuth as default};
 
-export default (requireAuth);
+export default requireAuth;
