@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useCoresContext } from "../hooks/useCoresContext.js"
+import { useAuthContext } from "../hooks/useAuthContext.js";
 
 
 const AdminForm = () => {
     const { dispatch } = useCoresContext();
+    const { user } = useAuthContext();
     const [size, setSize] = useState('');
     const [count, setCount] = useState('');
     const [error, setError] = useState(null);
@@ -12,13 +14,19 @@ const AdminForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!user) {
+            setError('You must be logged in!');
+            return
+        }
+
         const core = {size, count};
 
         const response = await fetch('/api/cores', {
             method: 'POST',
             body: JSON.stringify(core),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`,
             }
         })
         const json = await response.json();

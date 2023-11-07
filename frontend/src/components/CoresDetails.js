@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
+
+
 
 
 const CoresDetails = ({ core, dispatch }) => { 
-    // const { dispatch, needAdditional } = useContext(CoresContext);
     const [isChecked, setIsChecked] = useState(false);
+    const { user } = useAuthContext();
 
     useEffect(() => {
         //this updates the initial state of isChecked when needAdditional changes
@@ -12,8 +15,14 @@ const CoresDetails = ({ core, dispatch }) => {
 
     //handle click to delete core
     const handleDeleteClick = async () => {
+        if (!user) {
+            return
+        }
         const response = await fetch('/api/cores/' + core._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`,
+            }
         })
         const json = await response.json()
 

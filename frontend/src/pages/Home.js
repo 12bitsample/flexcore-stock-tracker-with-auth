@@ -6,21 +6,30 @@ import { useCoresContext } from "../hooks/useCoresContext.js"
 import CoresDetails from '../components/CoresDetails.js'
 import AdminForm from "../components/AdminForm.js";
 import UserForm from "../components/UserForm.js";
+import { useAuthContext } from "../hooks/useAuthContext.js";
 
 const Home = () => {
     const {cores, dispatch} = useCoresContext();
+    const {user} = useAuthContext();
    
         useEffect(() => {
         const fetchCores = async () => {
-            const response = await fetch('/api/cores');
+            const response = await fetch('/api/cores', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
             const json = await response.json();
 
             if (response.ok) {
                 dispatch({type: 'SET_CORES', payload: json})
             }
         }
-        fetchCores();
-    }, [dispatch])
+        if (user) {
+            fetchCores();
+        }
+        
+    }, [dispatch, user])
 
     //custom sort function to prioritize checked cores then sort by count
     const customSort = (a, b) => {
@@ -46,11 +55,6 @@ const Home = () => {
                 ))}
                 
             </div>
-            {/* <div className="help">
-                <h2>Help</h2>
-                <p>lorem20
-                </p>
-            </div> */}
             <AdminForm />
             <UserForm />
         </div>

@@ -1,11 +1,13 @@
 import { useState, useEffect,useContext } from "react";
 import { useCoresContext } from "../hooks/useCoresContext.js";
 import { CoresContext } from "../context/CoreContext.js";
+import { useAuthContext } from "../hooks/useAuthContext.js";
 
 
 
 const UserForm = () => {
     const { cores } = useContext(CoresContext);
+    const { user } = useAuthContext();
     const [coreDropdown, setCoresDropdown] = useState([]);
     const { dispatch } = useCoresContext();
 
@@ -16,6 +18,7 @@ const UserForm = () => {
     const [error, setError] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
 
+
     //chatgpt suggestion
 
       useEffect(() => {
@@ -23,7 +26,7 @@ const UserForm = () => {
             try {
                 const response = await fetch('/api/cores', {
                     method: 'GET',
-                    headers: {'Content-Type': 'application/json'}
+                    headers: {'Content-Type': 'application/json',}
                 });
         
                 if (!response.ok) {
@@ -46,6 +49,10 @@ const UserForm = () => {
         
             let  id = null;
             
+            if (!user) {
+                setError('You must be logged in!');
+                return
+            }
             //retrieve id based on size  
             try {
                 // Fetch the ID based on the selected core size
@@ -53,7 +60,8 @@ const UserForm = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${user.token}`,
                 }
                 });
             
