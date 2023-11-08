@@ -15,8 +15,6 @@ const requireAuth = async (req, res, next) => {
 
     try {
         const { _id } = jwt.verify(token, process.env.SECRET_JWT_PASS);
-        console.log('This is the _id in requireAuth: ', _id);
-        
 
         req.user = await User.findOne({ _id }).select('_id');
         next();

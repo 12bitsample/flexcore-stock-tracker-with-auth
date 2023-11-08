@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-
-
-
 const CoresDetails = ({ core, dispatch }) => { 
     const [isChecked, setIsChecked] = useState(false);
     const { user } = useAuthContext();
+    
 
     useEffect(() => {
         //this updates the initial state of isChecked when needAdditional changes
         setIsChecked(core.needAdditional || false);
-    }, [core]);
+    }, [core, user.token]);
 
     //handle click to delete core
     const handleDeleteClick = async () => {
@@ -42,6 +40,7 @@ const CoresDetails = ({ core, dispatch }) => {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`,
             },
             body:JSON.stringify({ ...core, needAdditional: updatedNeedAdditional }), 
         });

@@ -24,9 +24,18 @@ const UserForm = () => {
       useEffect(() => {
         const fetchData = async () => {
             try {
+                if (!user) {
+                    // Handle the case where the user is not logged in
+                    console.error('User is not logged in.');
+                    return;
+                }
+
                 const response = await fetch('/api/cores', {
                     method: 'GET',
-                    headers: {'Content-Type': 'application/json',}
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`,
+                    }
                 });
         
                 if (!response.ok) {
@@ -41,7 +50,7 @@ const UserForm = () => {
                 console.error('Error fetching data:', error);
             }
         }
-        fetchData()}, [dispatch]);
+        fetchData()}, [dispatch, user]);
 
         //handle submit
         const handleSubmit = async (e) => {
