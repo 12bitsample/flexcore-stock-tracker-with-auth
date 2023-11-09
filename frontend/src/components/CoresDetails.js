@@ -34,8 +34,6 @@ const CoresDetails = ({ core, dispatch }) => {
         
         setIsChecked(updatedNeedAdditional); // Toggle the checkbox state
 
-        console.log('this is isChecked value', isChecked);
-
         const response = await fetch('/api/cores/' + core._id, {
             method: 'PATCH',
             headers: {
