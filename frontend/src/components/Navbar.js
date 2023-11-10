@@ -17,7 +17,6 @@ const Navbar = () => {
                     <h1>Flex-Core Raw Core Tracker</h1>
                 </Link>
                 <nav>
-                    
                     {user && (
                         <div id="div-logged-in">
                             <span>{user.username}</span>

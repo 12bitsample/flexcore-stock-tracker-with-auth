@@ -14,7 +14,7 @@ body {
   flex-direction: column;
 }
 
-header .container {
+/* header .container {
   margin: 0 auto;
   text-align: center;
   justify-content: space-between;
@@ -22,6 +22,12 @@ header .container {
   border-bottom: solid black 1px;
   box-shadow: 10px 1px 10px black;
   margin-bottom: 1%;
+} */
+
+header .container {
+  display: inline;
+  text-align:center
+
 }
 
 header a {
@@ -31,10 +37,15 @@ header a {
   -webkit-text-stroke-color: black; */
 }
 
+header h1 {
+  padding-top: 2vw;
+}
+
 .pages {
   max-width: 90%;
   padding: 0 1% 1% 1%;
   margin:0 auto;
+  
 }
 
 .cores-details {
@@ -168,7 +179,7 @@ nav button {
 
 /* auth forms */
 form.signup, form.login {
-  max-width: 75%;
+  max-width: 50%;
   margin: 50px auto;
   padding: 2%;
   background: #fff;
