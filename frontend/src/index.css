@@ -9,11 +9,18 @@
 body {
   margin: 0;
   font-family: 'Lora', serif;
-  /* background-color: #195da9; */
+  display: flex;
   background-image: linear-gradient(#195da9, rgb(56, 67, 108));
-  display:flex;
+  background-size: cover;
+
   flex-direction: column;
 }
+
+/* div.home {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+} */
 
 /* header .container {
   margin: 0 auto;
@@ -46,6 +53,7 @@ header h1 {
   max-width: 90%;
   padding: 0 1% 1% 1%;
   margin:0 auto;
+  height: 100vh;
   
 }
 
@@ -55,6 +63,7 @@ header h1 {
   border: 1px black solid;
   margin: .2% 0 .2% 0;
   padding: 1% 0 1% 1%;
+  flex-grow: 2;
 }
 
 .cores-details > * {
@@ -99,6 +108,7 @@ header h1 {
   margin: 1.5% 0 1.5% 0;
   padding: 1% 0 1% 1%;
   align-items: center;
+
 }
 
 #admin-form h3 {
@@ -157,7 +167,7 @@ nav a {
 }
 
 nav span, button {
-  margin: 0 40px 0 0;
+  margin: 0 2rem 0 0;
 }
 
 /* logout  */
@@ -184,6 +194,7 @@ nav button {
 
 #div-logged-out {
   text-align: end;
+  margin-right: 1vw;
 }
 
 /* auth forms */

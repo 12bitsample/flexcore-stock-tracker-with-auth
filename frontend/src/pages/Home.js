@@ -54,6 +54,7 @@ const Home = () => {
                     <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
                 ))}
                 
+        
             </div>
             <AdminForm />
             <UserForm />
