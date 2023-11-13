@@ -6,21 +6,26 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: 'Lora', serif;
   display: flex;
+  height:100%;
   background-image: linear-gradient(#195da9, rgb(56, 67, 108));
-  background-size: cover;
-
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   flex-direction: column;
 }
 
-/* div.home {
+div.home {
   display:flex;
   flex-direction: column;
-  align-items: center;
-} */
+  /* align-items: center; */
+}
 
 /* header .container {
   margin: 0 auto;
@@ -53,7 +58,6 @@ header h1 {
   max-width: 90%;
   padding: 0 1% 1% 1%;
   margin:0 auto;
-  height: 100vh;
   
 }
 
@@ -63,7 +67,7 @@ header h1 {
   border: 1px black solid;
   margin: .2% 0 .2% 0;
   padding: 1% 0 1% 1%;
-  flex-grow: 2;
+  /* flex-grow: 2; */
 }
 
 .cores-details > * {
