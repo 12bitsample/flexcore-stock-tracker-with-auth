@@ -46,19 +46,36 @@ const Home = () => {
     const sortedCores = cores.slice().sort(customSort);
 
     return (
-        <div className="home">
+        <div>
             <h3 className='core-title'>Core Details</h3>
-            {/* map cores to home */}
-            <div className="cores">
-                {sortedCores.map((core) => (
-                    <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
-                ))}
+            <div className="home">
+                
+                {/* map cores to home */}
+                <div className="cores">
+                    {sortedCores.map((core) => (
+                        <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
+                    ))}
+                    
+            
+                </div>
+                <AdminForm />
+                <UserForm />
+            </div>
+
+        </div>
+        // <div className="home">
+        //     <h3 className='core-title'>Core Details</h3>
+        //     {/* map cores to home */}
+        //     <div className="cores">
+        //         {sortedCores.map((core) => (
+        //             <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
+        //         ))}
                 
         
-            </div>
-            <AdminForm />
-            <UserForm />
-        </div>
+        //     </div>
+        //     <AdminForm />
+        //     <UserForm />
+        // </div>
     )
 }
 

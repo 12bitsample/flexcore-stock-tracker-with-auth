@@ -22,8 +22,11 @@ body {
 }
 
 div.home {
-  display:flex;
-  flex-direction: column;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+ 
+  /* flex-direction: column; */
   /* align-items: center; */
 }
 
@@ -67,7 +70,7 @@ header h1 {
   border: 1px black solid;
   margin: .2% 0 .2% 0;
   padding: 1% 0 1% 1%;
-  /* flex-grow: 2; */
+  
 }
 
 .cores-details > * {
@@ -112,6 +115,8 @@ header h1 {
   margin: 1.5% 0 1.5% 0;
   padding: 1% 0 1% 1%;
   align-items: center;
+  grid-column: 2;
+  grid-row: 1/2;
 
 }
 
@@ -122,6 +127,20 @@ header h1 {
 
 #admin-form > * {
   margin-top: 1%;;
+}
+
+/* user form  */
+#user-form {
+  display:flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px black solid;
+  margin: 1.5% 0 1.5% 0;
+  padding: 1% 0 1% 1%;
+  align-items: center;
+  grid-column: 2/-1;
+  grid-row: 2/-1;
+
 }
 
 button {

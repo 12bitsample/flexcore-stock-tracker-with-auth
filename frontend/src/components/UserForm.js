@@ -103,7 +103,8 @@ const UserForm = () => {
                 body: JSON.stringify(coreCountChange),
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${user.token}`,
                 }
             }); 
 
@@ -125,7 +126,7 @@ const UserForm = () => {
     
         return (
             <div>
-                <form action="" className="" id="admin-form" onSubmit={handleSubmit}>
+                <form action="" className="" id="user-form" onSubmit={handleSubmit}>
                 <h3>Add/Remove Cores</h3>
                 
                 <label>Core Size: </label>
