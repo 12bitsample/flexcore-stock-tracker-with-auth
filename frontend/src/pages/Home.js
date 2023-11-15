@@ -47,18 +47,18 @@ const Home = () => {
 
     return (
         <div>
-            <h3 className='core-title'>Core Details</h3>
-            <div className="home">
+            <h3 className='core-title'>Core Stock</h3>
+            <div className="home ">
                 
                 {/* map cores to home */}
-                <div className="cores">
+                <div className="cores grid-row-span-2">
                     {sortedCores.map((core) => (
                         <CoresDetails key={core._id} core={core}dispatch={dispatch}  />
                     ))}
                     
             
                 </div>
-                <AdminForm />
+                <AdminForm /> 
                 <UserForm />
             </div>
 
